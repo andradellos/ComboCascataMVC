@@ -1,0 +1,61 @@
+﻿@model List<ComboCascata.MVC.Models.PaisViewModel>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="row">
+    <div class="col-md-6">
+        Países:
+        @Html.DropDownList("cmd_pais", new SelectList(Model, "id", "Nome"))
+    </div>
+    <div class="col-md-6">
+        @*Aqui es drop será criado sem nada dentro pois está passando esse parâmetro Enumerable.Empty<SelectListItem>()*@
+        Estado:
+        @Html.DropDownList("cmd_estado", new SelectList(Enumerable.Empty<SelectListItem>(), "id", "Nome"))
+    </div>
+    <div id="cargaexterna" class="col-md-9">
+        <button id="botao" value="botao" name="botao">Botão</button>
+    </div>
+
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#cmd_pais').change(function () {
+            var idPais = $('#cmd_pais').val();
+            if (idPais > 0) {
+                $.post('@Url.Action("ObterEstados", "Home")', {'idPais': idPais }, function (data) {
+                    $('#cmd_estado').empty();
+                    if (data.length > 0) {
+                        for (var i = 0; i < data.length; i++) {
+                            $('#cmd_estado').append('<option value"' + data[i].id + '">' + data[i].Nome + '</option>')
+                        }
+                    }
+                });
+            }
+        });
+        $('#botao').click(function () {
+            var idPais = $('#cmd_pais').val();
+            $.post('@Url.Action("ObterEstados", "Home")', { 'idPais': idPais }, function (htmlexterno) {
+                $('#cargaexterna').empty();
+                for (var i = 0; i < htmlexterno.length; i++) {
+                    $('#cargaexterna').append('<option value"' + htmlexterno[i].id + '">' + htmlexterno[i].Nome + '</option>')
+                }
+
+            });
+        });
+    });
+
+
+
+    @*$(document).ready(function () {
+        $('#botao').click(function () {
+            var idPais = $('#cmd_pais').val();
+            $.post('@Url.Action("ObterEstados", "Home")', { 'idPais': idPais }, function (htmlexterno) {
+                for (var i = 0; i < htmlexterno.length; i++) {
+                    $('#cargaexterna').append('<option value"' + htmlexterno[i].id + '">' + htmlexterno[i].Nome + '</option>')
+                }
+                
+            });
+        });
+    });*@
+</script>
