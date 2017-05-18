@@ -48,6 +48,6 @@ C:\Users\Emanuel\Documents\GitHub\ComboCascataMVC\ComboCascata.MVC\bin\System.We
 C:\Users\Emanuel\Documents\GitHub\ComboCascataMVC\ComboCascata.MVC\bin\System.Web.WebPages.Razor.xml
 C:\Users\Emanuel\Documents\GitHub\ComboCascataMVC\ComboCascata.MVC\bin\Antlr3.Runtime.pdb
 C:\Users\Emanuel\Documents\GitHub\ComboCascataMVC\ComboCascata.MVC\bin\Newtonsoft.Json.xml
-C:\Users\Emanuel\Documents\GitHub\ComboCascataMVC\ComboCascata.MVC\obj\Debug\ComboCascata.MVC.csprojResolveAssemblyReference.cache
 C:\Users\Emanuel\Documents\GitHub\ComboCascataMVC\ComboCascata.MVC\obj\Debug\ComboCascata.MVC.dll
 C:\Users\Emanuel\Documents\GitHub\ComboCascataMVC\ComboCascata.MVC\obj\Debug\ComboCascata.MVC.pdb
+C:\Users\Emanuel\Documents\GitHub\ComboCascataMVC\ComboCascata.MVC\obj\Debug\ComboCascata.MVC.csprojResolveAssemblyReference.cache

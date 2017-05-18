@@ -18,12 +18,12 @@ namespace ComboCascata.MVC.Controllers
 
         private List<EstadoViewModel> _listaestados = new List<EstadoViewModel>()
         {
-            new EstadoViewModel() {id=1 , Nome="Bahia",idPais=1 },
-            new EstadoViewModel() {id=1 , Nome="Ceará",idPais=1  },
-            new EstadoViewModel() {id=1 , Nome="Brasilia",idPais=1  },
-            new EstadoViewModel() {id=1 , Nome="Rio Grande",idPais=1 },
-            new EstadoViewModel() {id=1 , Nome="Luanda",idPais=2 },
-            new EstadoViewModel() {id=1 , Nome="Maputo",idPais=2  }
+            new EstadoViewModel() {cod=1 , Nome="Bahia",idPais=1 },
+            new EstadoViewModel() {cod=2 , Nome="Ceará",idPais=1  },
+            new EstadoViewModel() {cod=3 , Nome="Brasilia",idPais=1  },
+            new EstadoViewModel() {cod=4 , Nome="Rio Grande",idPais=1 },
+            new EstadoViewModel() {cod=5 , Nome="Luanda",idPais=2 },
+            new EstadoViewModel() {cod=6 , Nome="Maputo",idPais=2  }
 
         };
 
