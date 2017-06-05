@@ -50,4 +50,3 @@ C:\Users\Emanuel\Documents\GitHub\ComboCascataMVC\ComboCascata.MVC\bin\Antlr3.Ru
 C:\Users\Emanuel\Documents\GitHub\ComboCascataMVC\ComboCascata.MVC\bin\Newtonsoft.Json.xml
 C:\Users\Emanuel\Documents\GitHub\ComboCascataMVC\ComboCascata.MVC\obj\Debug\ComboCascata.MVC.dll
 C:\Users\Emanuel\Documents\GitHub\ComboCascataMVC\ComboCascata.MVC\obj\Debug\ComboCascata.MVC.pdb
-C:\Users\Emanuel\Documents\GitHub\ComboCascataMVC\ComboCascata.MVC\obj\Debug\ComboCascata.MVC.csprojResolveAssemblyReference.cache

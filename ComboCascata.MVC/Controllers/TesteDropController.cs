@@ -44,7 +44,6 @@ namespace ComboCascata.MVC.Controllers
 		// GET: TesteDrop
 
 		public ActionResult Index()
-
 		{
 			// Inserir linha 0 na lista
 			var ListComSelecione = new List<EstadoViewModel>();
