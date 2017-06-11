@@ -1,0 +1,124 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Input com autocomplete Jquery Ajax</h2>
+<script src="~/Scripts/jquery-1.12.4.min.js"></script>
+<script src="~/Scripts/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+<link href="~/Scripts/jquery-ui-1.12.1.custom/jquery-ui.css" rel="stylesheet" />
+<link href="~/Scripts/jquery-ui-1.12.1.custom/jquery-ui.theme.css" rel="stylesheet" />
+
+
+<script type="text/javascript">
+	$(document).ready(function () {
+		$(function () {
+			var availableTags = [
+			  "ActionScript",
+			  "AppleScript",
+			  "Asp",
+			  "BASIC",
+			  "C",
+			  "C++",
+			  "Clojure",
+			  "COBOL",
+			  "ColdFusion",
+			  "Erlang",
+			  "Fortran",
+			  "Groovy",
+			  "Haskell",
+			  "Java",
+			  "JavaScript",
+			  "Lisp",
+			  "Perl",
+			  "PHP",
+			  "Python",
+			  "Ruby",
+			  "Scala",
+			  "Scheme"
+			];
+
+			$("#tags").autocomplete({
+				source: availableTags
+			});
+
+			//Método Passando objeto com parametros por data: e filtrando na controller antes de retornar.
+			//Desse jeito não será carregado tudo na tela quendo entrar na página o filtro será feito diretamente no banco.
+			$("#cidades").autocomplete({
+				source: function (request, response) {
+					$.ajax({
+						type: "POST",
+						contentType: "application/json; charset=utf-8",
+						url: "ListaEstados",
+						data: "{filtro: '" + request.term + "'}",//A variável term carrega o dado escrito no input da tela
+						async: true,
+						dataType: "json",
+						success: function (data) {
+							response($.map(data, function (el) {
+								return el.Nome;
+							}));
+						}
+					});
+				}
+			});
+			//---------------------------
+
+			//Desta forma será tudo carregado no html da página e o filtro será do HTML.
+			$("#cidadesArray").autocomplete({
+				source: GetArrayDados()
+			});
+		});
+	});
+
+	function GetArrayDados() {
+		var dadosList = [];
+		$.ajax({
+			type: "POST",
+			contentType: "application/json; charset=utf-8",
+			url: "ListaEstadosAray",
+			data: "{}",
+			async: true,
+			dataType: "json",
+			success: function (data) {
+				for (var i = 0; i < data.length; i++) {
+					dadosList.push(data[i].Nome);
+				}
+			}
+		});
+		return dadosList;
+	};
+
+	$(document).ready(function () {
+		$("#cara").click(function () {
+			var dados = $('#tags').val();
+			var cidadesArray1 = $('#cidadesArray').val();
+			var cidades = $('#cidades').val();
+			alert(dados + ' - ' + cidades + ' - ' + cidadesArray1);
+		});
+	});
+
+</script>
+
+<div class="form-horizontal">
+	<h4>Input com autocomplete Jquery Ajax</h4>
+	<hr />	
+	<div class="ui-widget">
+		<label for="tags">Cidades com aray: </label>
+		<input id="tags">  Exemplo
+	</div>
+	<br />
+	<div class="ui-widget">
+		<label for="cidades">Cidades com Ajax: </label>
+		<input id="cidades"> Parametro passado e o filtro acontece no banco.
+	</div>
+	<br />
+	<div class="ui-widget">
+		<label for="cidadesArray">Cidades com Ajax retorando primeiro array: </label>
+		<input id="cidadesArray"> Carrega todos os dados e filtro acontece no HTML.
+	</div>
+	<br />
+	<div>
+		<input id="cara" type="button" value="Cpturar" />
+	</div>
+</div>

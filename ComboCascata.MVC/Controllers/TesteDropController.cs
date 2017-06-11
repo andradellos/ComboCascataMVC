@@ -56,6 +56,17 @@ namespace ComboCascata.MVC.Controllers
 
 			return View(EsClsEsrado);
 		}
+		
+
+		public JsonResult ListaEstados()
+		{
+			// Inserir linha 0 na lista
+			var ListComSelecione = new List<EstadoViewModel>();
+			ListComSelecione.AddRange(_listaestados);
+			ListComSelecione.Insert(0, new EstadoViewModel() { cod = -1, Nome = "Selecione..." });
+
+			return Json(ListComSelecione, JsonRequestBehavior.AllowGet);
+		}
 
 		[HttpPost]
 		public ActionResult Index(EstadoViewModel collection)

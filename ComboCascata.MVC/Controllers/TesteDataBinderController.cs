@@ -24,13 +24,13 @@ namespace ComboCascata.MVC.Controllers
 				(
 					new Cliente().ListaClientes(),
 					"ClienteId",
-					"Nome"
+					"NomeCliente"
 				);
 
 			return View();
 		}
 		[HttpPost]
-		public ActionResult Index(TesteDataBinder DadosDaTela, string clienteId)
+		public ActionResult Index(TesteDataBinder DadosDaTela, string Nome)
 		{
 
 			// O quarto parametro "clienteId" diz qual é o ID
@@ -39,11 +39,11 @@ namespace ComboCascata.MVC.Controllers
 				(
 					new Cliente().ListaClientes(),
 					"ClienteId",
-					"Nome"
-					,clienteId
+					"NomeCliente"
+					, DadosDaTela.clienteId
 				);
 
-			return View("cadastro", DadosDaTela);
+			return View(DadosDaTela);
 		}
 		public ActionResult cadastro()
 		{

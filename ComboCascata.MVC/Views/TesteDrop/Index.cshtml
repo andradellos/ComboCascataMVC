@@ -6,13 +6,82 @@
 }
 
 <h2>Index</h2>
+<script src="~/Scripts/jquery-1.12.4.min.js"></script>
+<script src="~/Scripts/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+<link href="~/Scripts/jquery-ui-1.12.1.custom/jquery-ui.css" rel="stylesheet" />
+<link href="~/Scripts/jquery-ui-1.12.1.custom/jquery-ui.theme.css" rel="stylesheet" />
+
+<script type="text/javascript">
+	$(document).ready(function () {
+		$(function () {
+			var availableTags = [
+			  "ActionScript",
+			  "AppleScript",
+			  "Asp",
+			  "BASIC",
+			  "C",
+			  "C++",
+			  "Clojure",
+			  "COBOL",
+			  "ColdFusion",
+			  "Erlang",
+			  "Fortran",
+			  "Groovy",
+			  "Haskell",
+			  "Java",
+			  "JavaScript",
+			  "Lisp",
+			  "Perl",
+			  "PHP",
+			  "Python",
+			  "Ruby",
+			  "Scala",
+			  "Scheme"
+			];
+
+			//$("#tags").autocomplete({
+			//	source: availableTags
+			//});
+
+			$("#tags").autocomplete({
+
+				source: function (request, response) {
+					$.ajax({
+						type: "POST",
+						contentType: "application/json; charset=utf-8",
+						url: "ListaEstados",
+						data: "{}",
+						dataType: "json",
+						success: function (data) {
+							response($.map(data, function (el) {
+								return el.Nome;
+							}));
+						}
+					});
+				}
+			});
+
+		});
+	});
+	$(document).ready(function () {
+		$("#cara").click(function () {
+
+			var dados = $('#tags').val();
+
+			alert(dados);
+		});
+	});
+
+
+</script>
 
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
-    
+	    
     <div class="form-horizontal">
+
         <h4>EstadoViewModel</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -23,6 +92,14 @@
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>
+
+		<div class="ui-widget">
+			<label for="tags">Tags: </label>
+			<input id="tags">
+		</div>
+		<div>
+			<input id="cara" type="button" value="Cpturar" />
+		</div>
     </div>
 }
 
@@ -31,5 +108,6 @@
 </div>
 
 @section Scripts {
+	
     @Scripts.Render("~/bundles/jqueryval")
 }
