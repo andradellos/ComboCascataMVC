@@ -148,6 +148,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ActionLinksController.cs" />
     <Compile Include="Controllers\AutoCompleteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TesteDataBinderController.cs" />
@@ -272,6 +273,7 @@
     <Content Include="Views\VenhaDataBinder\Index.cshtml" />
     <Content Include="Views\TesteDataBinder\cadastro.cshtml" />
     <Content Include="Views\AutoComplete\Index.cshtml" />
+    <Content Include="Views\ActionLinks\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

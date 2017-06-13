@@ -7,8 +7,8 @@ using ComboCascata.MVC.Models;
 
 namespace ComboCascata.MVC.Controllers
 {
-    public class AutoCompleteController : Controller
-    {
+	public class AutoCompleteController : Controller
+	{
 
 		private List<PaisViewModel> _listapais = new List<PaisViewModel>()
 		{
@@ -30,14 +30,17 @@ namespace ComboCascata.MVC.Controllers
 
 		// GET: AutoComplete
 		public ActionResult Index()
-        {
-            return View();
-        }
+		{
+			return View();
+		}
 
-
+		/// <summary>
+		/// Retorna lista de estados filtrado pelo parametro pasado na variável filtro.
+		/// </summary>
+		/// <param name="filtro">dados que deseja filtrar</param>
+		/// <returns>Lista de estados</returns>
 		public JsonResult ListaEstados(string filtro)
 		{
-			// Inserir linha 0 na lista
 			var ListComSelecione = new List<EstadoViewModel>();
 			var ListComSelecioneComFiltro = new List<EstadoViewModel>();
 			ListComSelecione.AddRange(_listaestados);
@@ -48,25 +51,28 @@ namespace ComboCascata.MVC.Controllers
 				if (item.Nome.ToLower().Contains(filtro.ToLower()))
 				{
 					ListComSelecioneComFiltro.Add(item);
-				}				
+				}
 			}
-
-			//ListComSelecione = ListComSelecione.Where(x => x.Nome.Contains(filtro)).ToList();
-
 			return Json(ListComSelecioneComFiltro, JsonRequestBehavior.AllowGet);
 		}
-
-
-
-		public JsonResult ListaEstadosAray( )
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public JsonResult ListaEstadosAray()
 		{
-			// Inserir linha 0 na lista
+
 			var ListComSelecione = new List<EstadoViewModel>();
-			 
+
 			ListComSelecione.AddRange(_listaestados);
 			ListComSelecione.Insert(0, new EstadoViewModel() { cod = -1, Nome = "Selecione..." });
- 
+
 			return Json(ListComSelecione, JsonRequestBehavior.AllowGet);
+		}
+
+		public ActionResult testeParametros(string dado)
+		{
+			return View();
 		}
 	}
 }
