@@ -24,8 +24,8 @@ namespace ComboCascata.MVC.Controllers
 
 		private List<PaisViewModel> _listapais = new List<PaisViewModel>()
 		{
-			new PaisViewModel() {id=1 , Nome="Brasil" },
-			new PaisViewModel() {id=2 , Nome="Angola" }
+			new PaisViewModel() {idPais=1 , Nome="Brasil" },
+			new PaisViewModel() {idPais=2 , Nome="Angola" }
 		};
 
 		private List<EstadoViewModel> _listaestados = new List<EstadoViewModel>()
@@ -48,10 +48,10 @@ namespace ComboCascata.MVC.Controllers
 			// Inserir linha 0 na lista
 			var ListComSelecione = new List<EstadoViewModel>();
 			ListComSelecione.AddRange(_listaestados);
-			ListComSelecione.Insert(0, new EstadoViewModel() { cod = -1, Nome = "Selecione..." });			
-
+			ListComSelecione.Insert(0, new  EstadoViewModel() { cod = -1, Nome = "Selecione..." });			
+		
 			EstadoViewModel EsClsEsrado = new EstadoViewModel();
-			EsClsEsrado._listaestados = ListComSelecione;
+			//EsClsEsrado._listaestados = ListComSelecione;
 			TempData["Funcionario"] = EsClsEsrado;
 
 			return View(EsClsEsrado);
@@ -76,7 +76,7 @@ namespace ComboCascata.MVC.Controllers
 			ListComSelecione.AddRange(_listaestados);
 			ListComSelecione.Insert(0, new EstadoViewModel() { cod = -1, Nome = "Selecione..." });
 
-			collection._listaestados = ListComSelecione;
+			//collection._listaestados = ListComSelecione;
 		    TempData["Funcionario"] = collection;
 
 			return RedirectToAction("pum", collection);
@@ -96,7 +96,7 @@ namespace ComboCascata.MVC.Controllers
 				ListComSelecione.AddRange(_listaestados);
 				ListComSelecione.Insert(0, new EstadoViewModel() { cod = -1, Nome = "Selecione..." });
 				 
-				collection._listaestados = ListComSelecione;
+				//collection._listaestados = ListComSelecione;
 
 				return View(collection);
 			}
@@ -116,7 +116,7 @@ namespace ComboCascata.MVC.Controllers
 				ListComSelecione.AddRange(_listaestados);
 				ListComSelecione.Insert(0, new EstadoViewModel() { cod = -1, Nome = "Selecione..." });
 
-				collection._listaestados = ListComSelecione;
+				//collection._listaestados = ListComSelecione;
 
 				return View(collection);
 			}

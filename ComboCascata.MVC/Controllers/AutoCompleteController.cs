@@ -12,8 +12,8 @@ namespace ComboCascata.MVC.Controllers
 
 		private List<PaisViewModel> _listapais = new List<PaisViewModel>()
 		{
-			new PaisViewModel() {id=1 , Nome="Brasil" },
-			new PaisViewModel() {id=2 , Nome="Angola" }
+			new PaisViewModel() {idPais=1 , Nome="Brasil" },
+			new PaisViewModel() {idPais=2 , Nome="Angola" }
 		};
 
 		private List<EstadoViewModel> _listaestados = new List<EstadoViewModel>()
@@ -61,12 +61,9 @@ namespace ComboCascata.MVC.Controllers
 		/// <returns></returns>
 		public JsonResult ListaEstadosAray()
 		{
-
 			var ListComSelecione = new List<EstadoViewModel>();
-
 			ListComSelecione.AddRange(_listaestados);
 			ListComSelecione.Insert(0, new EstadoViewModel() { cod = -1, Nome = "Selecione..." });
-
 			return Json(ListComSelecione, JsonRequestBehavior.AllowGet);
 		}
 

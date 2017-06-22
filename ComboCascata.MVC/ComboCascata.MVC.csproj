@@ -149,7 +149,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ActionLinksController.cs" />
+    <Compile Include="Controllers\AlbumController.cs" />
     <Compile Include="Controllers\AutoCompleteController.cs" />
+    <Compile Include="Controllers\EstadoPaisController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TesteDataBinderController.cs" />
     <Compile Include="Controllers\TesteDropController.cs" />
@@ -158,9 +160,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Albums.cs" />
+    <Compile Include="Models\Artist.cs" />
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\CustomModelBinder.cs" />
     <Compile Include="Models\EstadoViewModel.cs" />
+    <Compile Include="Models\Genres.cs" />
     <Compile Include="Models\PaisViewModel.cs" />
     <Compile Include="Models\TesteDataBinder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -274,6 +279,8 @@
     <Content Include="Views\TesteDataBinder\cadastro.cshtml" />
     <Content Include="Views\AutoComplete\Index.cshtml" />
     <Content Include="Views\ActionLinks\Index.cshtml" />
+    <Content Include="Views\EstadoPais\Index.cshtml" />
+    <Content Include="Views\Album\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
